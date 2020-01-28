@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_for_blog_post/pages/login/login_content_desktop.dart';
+import 'package:flutter_app_for_blog_post/pages/login/login_content_mobile.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -10,21 +12,20 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    TextAlign textAlign = MediaQuery.of(context).size.width < 700 ? TextAlign.center : TextAlign.start;
+    double titleSize = MediaQuery.of(context).size.width < 700 ? 50 : 80;
+    double contentSize = MediaQuery.of(context).size.width < 700 ? 16 : 21;
+    CrossAxisAlignment crossAxisAlignment = MediaQuery.of(context).size.width < 700 ? CrossAxisAlignment.center : CrossAxisAlignment.start;
+
     return Center(
       child: Container(
         color: Theme.of(context).backgroundColor,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-
-            LoginForm(),
-          ],
-        ),
+        child: LoginForm()
       ),
     );
   }
 }
-
 
 class LoginForm extends StatefulWidget {
   @override
@@ -32,99 +33,13 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        SizedBox(
-          width: 250,
-          child: TextField(
-            controller: emailController,
-            style: TextStyle(color: Theme.of(context).backgroundColor),
-            decoration: InputDecoration(
 
-                hintText: "AUTH ID",
-                filled: true,
-                fillColor: Theme.of(context).primaryColor,
-                hintStyle: TextStyle(
-                    color: Theme.of(context).backgroundColor,
-                    fontWeight: FontWeight.w800),
-                prefixIcon: Padding(
-                  padding: const EdgeInsets.only(left: 24.0, right: 16.0),
-                  child: Icon(
-                    Icons.all_inclusive,
-                    color: Theme.of(context).backgroundColor,
-                  ),
-                ),
-                focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(32.0))),
-                enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)))),
-          ),
-        ),
-        SizedBox(
-          height: 16,
-        ),
-        SizedBox(
-          width: 250,
-          child: TextField(
-            controller: passwordController,
-            style: TextStyle(color: Theme.of(context).backgroundColor),
-            decoration: InputDecoration(
-                filled: true,
-                fillColor: Theme.of(context).primaryColor,
-                hintText: "AUTH CODE",
-                hintStyle: TextStyle(
-                    color: Theme.of(context).backgroundColor,
-                    fontWeight: FontWeight.w800),
-                prefixIcon: Padding(
-                  padding: const EdgeInsets.only(left: 24.0, right: 16.0),
-                  child: Icon(
-                    Icons.code,
-                    color: Theme.of(context).backgroundColor,
-                  ),
-                ),
-                focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(32.0))),
-                enabledBorder: OutlineInputBorder(
-                    borderSide:
-                    BorderSide(color: Theme.of(context).primaryColor),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)))),
-          ),
-        ),
-        SizedBox(
-          height: 32,
-        ),
-        SubmitButton()
-      ],
-    );
+   return MediaQuery.of(context).size.width < 900 ? LoginContentMobile() : LoginContentDesktop();
   }
 }
 
-
-class SubmitButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 200,
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-      child: Text(
-        "Login",
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.w800,
-          color: Theme.of(context).backgroundColor,
-        ),
-      ),
-      decoration: BoxDecoration(
-          color: Theme.of(context).primaryColor,
-          borderRadius: BorderRadius.circular(32)),
-    );
-  }
-}

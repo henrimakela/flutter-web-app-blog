@@ -7,11 +7,13 @@ class ThemeBloc {
       primaryColor: Colors.black,
       textTheme: TextTheme(),
       buttonColor: Colors.black,
+      accentColor: Colors.grey[100],
       backgroundColor: Colors.white);
 
   ThemeData darkTheme = ThemeData(
       scaffoldBackgroundColor: Colors.black,
       primaryColor: Colors.white,
+      accentColor: Colors.grey[100],
       textTheme: TextTheme(),
       buttonColor: Colors.white,
       backgroundColor: Colors.black);
