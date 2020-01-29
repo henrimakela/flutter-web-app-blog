@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_for_blog_post/locator.dart';
 import 'package:flutter_app_for_blog_post/services/navigation_service.dart';
+import 'package:flutter_app_for_blog_post/extensions/hover_extension.dart';
 
 class NavBarItem extends StatelessWidget {
   final String title;
@@ -18,6 +19,6 @@ class NavBarItem extends StatelessWidget {
         title,
         style: TextStyle(fontSize: 18, color: Theme.of(context).primaryColor),
       ),
-    );
+    ).showCursorOnHover;
   }
 }

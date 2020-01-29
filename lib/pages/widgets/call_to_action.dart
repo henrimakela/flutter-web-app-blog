@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_for_blog_post/extensions/hover_extension.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 
@@ -27,7 +28,7 @@ class CallToAction extends StatelessWidget {
             color: color,
             borderRadius: BorderRadius.circular(5)),
       ),
-    );
+    ).showCursorOnHover;
   }
 
   _launchURL(String url) async {

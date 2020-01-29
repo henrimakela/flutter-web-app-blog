@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_for_blog_post/bloc/theme_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_app_for_blog_post/extensions/hover_extension.dart';
 
 class ThemeSwitch extends StatelessWidget {
   String imagePath;
@@ -34,6 +35,6 @@ class ThemeSwitch extends StatelessWidget {
             );
           }
           return Container();
-        });
+        }).showCursorOnHover;
   }
 }
